@@ -1,0 +1,19 @@
+int pinoSensorUmidade = 32;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pinoSensorUmidade, INPUT);
+}
+
+void loop() {
+  int leitura = analogRead(pinoSensorUmidade);
+  float tensao = leitura * (3.3 / 4095.0); // converte pra tensão, se ESP32
+
+  Serial.print("Leitura bruta: ");
+  Serial.print(leitura);
+  Serial.print(" | Tensão: ");
+  Serial.print(tensao);
+  Serial.println(" V");
+
+  delay(1000);
+}
