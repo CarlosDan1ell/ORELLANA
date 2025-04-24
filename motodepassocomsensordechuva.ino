@@ -1,11 +1,12 @@
 // Pinos do motor de passo
-int Pin1 = 17;  // IN1 ligado ao GPIO17
-int Pin2 = 18;  // IN2 ligado ao GPIO18  
-int Pin3 = 19;  // IN3 ligado ao GPIO19  
-int Pin4 = 21;  // IN4 ligado ao GPIO21
+int Pin1 = 15;
+int Pin2 = 16;
+int Pin3 = 0;
+int Pin4 = 33;
 
 // Sensor de chuva
-const int sensorChuvaPin = 16; // Pino do sensor de chuva
+const int sensorChuvaPin = 21; // Pino conectado ao OUT do módulo de chuva
+
 int pole1[] = {0, 0, 0, 0, 0, 1, 1, 1, 0};
 int pole2[] = {0, 0, 0, 1, 1, 1, 0, 0, 0};
 int pole3[] = {0, 1, 1, 1, 0, 0, 0, 0, 0};
@@ -18,50 +19,49 @@ void setup() {
   pinMode(Pin2, OUTPUT);  
   pinMode(Pin3, OUTPUT);  
   pinMode(Pin4, OUTPUT);   
-  pinMode(sensorChuvaPin, INPUT_PULLUP);  // Configura o sensor de chuva
+
+  pinMode(sensorChuvaPin, INPUT);  // NÃO usar INPUT_PULLUP no caso do módulo com relé!
 
   Serial.begin(115200);
+  Serial.println("Sistema iniciado. Aguardando leitura do sensor de chuva...");
 }
 
 void loop() {
   int estadoSensor = digitalRead(sensorChuvaPin);  // Lê o estado do sensor de chuva
+  Serial.print("Estado do sensor de chuva (GPIO 21): ");
+  Serial.println(estadoSensor);  // Mostra 0 ou 1 no Serial Monitor
 
-  // Se chover (sensor de chuva detecta água)
-  if (estadoSensor == LOW) {  
+  // Se o relé ativar (chove), geralmente a saída DO vai para LOW (0)
+  if (estadoSensor == HIGH) {
     Serial.println("🌧️ Chuva detectada! Abrindo o teto da estufa...");
-    
+
     // Girar no sentido anti-horário por 30 segundos (abrir o teto)
     unsigned long tempoInicio = millis();
-    while (millis() - tempoInicio < 30000) {  // 30000 ms = 30 segundos
+    while (millis() - tempoInicio < 3000) {
       poleStep++;
       driveStepper(poleStep);
-      if (poleStep > 7) poleStep = 0;  // Recomeçar a sequência após 7 passos
-      delay(10); // Ajuste de velocidade
+      if (poleStep > 7) poleStep = 0;
+      delay(10);
     }
 
-    delay(1000);  // Pausa de 1 segundo antes de mudar de direção
+    delay(1000);  // Pausa de 1 segundo
 
     Serial.println("⏳ Esperando 1 minuto antes de fechar o teto...");
-
-    // Espera de 1 minuto (60 segundos)
-    delay(60000);  
+    delay(1000);  // Aguarda 1 segundo
 
     Serial.println("🌞 Fechando o teto da estufa...");
-
-    // Girar no sentido horário por 30 segundos (fechar o teto)
     tempoInicio = millis();
-    while (millis() - tempoInicio < 30000) {  // 30000 ms = 30 segundos
+    while (millis() - tempoInicio < 3000) {
       poleStep--;
       driveStepper(poleStep);
-      if (poleStep < 0) poleStep = 7;  // Recomeçar a sequência após passo 0
-      delay(5); // Ajuste de velocidade
+      if (poleStep < 0) poleStep = 7;
+      delay(5);
     }
 
-    delay(1000);  // Pausa de 1 segundo antes de verificar novamente
-  } 
-  else {
-    Serial.println("☀️ Sem chuva. Estufa em modo fechado.");
-    delay(1000);  // Verifica o sensor a cada 1 segundo
+    delay(1000);  // Pausa de 1 segundo
+  } else {
+    Serial.println("☀️ Sem chuva. Estufa permanece fechada.");
+    delay(250);  // Verifica novamente após 1 segundo
   }
 }
 

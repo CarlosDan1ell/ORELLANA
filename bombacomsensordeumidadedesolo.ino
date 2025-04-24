@@ -1,5 +1,5 @@
-int pinoSensorUmidade = 32;
-int pinoRele = 5; // Pino conectado ao relé
+int pinoSensorUmidade = 4; 
+int pinoRele = 18; // Pino conectado ao relé
 
 void setup() {
   Serial.begin(9600);
