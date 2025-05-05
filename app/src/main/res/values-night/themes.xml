@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
-<!--&lt;!&ndash;    <style name="Base.Theme.OrellanaProject2" parent="Theme.Material3.DayNight.NoActionBar">&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; Customize your dark theme here. &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; <item name="colorPrimary">@color/my_dark_primary</item> &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+     Base application theme.
+    <style name="Theme.OrellanaProject2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
 </resources>

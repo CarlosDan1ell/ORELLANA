@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Tema do App -->
-    <style name="Theme.NeoFlora" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize seu tema aqui -->
+    <style name="Theme.OrellanaProject2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    <!-- Customize seu tema aqui -->
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/blue_dark</item>
         <item name="colorOnPrimary">@android:color/white</item>
