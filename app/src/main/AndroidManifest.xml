@@ -34,7 +34,8 @@
             android:name=".TelaPrincipalActivity"
             android:exported="false" />
 
-<!--        <meta-data-->
+
+        <!--        <meta-data-->
 <!--            android:name="preloaded_fonts"-->
 <!--            android:resource="@array/preloaded_fonts" />-->
     </application>
