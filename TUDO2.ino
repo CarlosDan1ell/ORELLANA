@@ -17,7 +17,7 @@ int Pin3 = 0;
 int Pin4 = 33;
 
 // === Sensor de chuva ===
-const int sensorChuvaPin = 23; // OUT do módulo de chuva (LOW quando chove)
+const int sensorChuvaPin = 23; // OUT do módulo de chuva (LOW quando chove) não usa
 
 // === Sensor de umidade do solo ===
 int pinoSensorUmidade = 4;
