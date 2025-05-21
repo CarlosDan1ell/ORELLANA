@@ -1,19 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="home"
-        android:gravity="center"
-        android:textColor="@color/blue"
-        android:textSize="36sp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
 
-        />
+        <!-- Título geral -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sensores Ambientais"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp" />
 
-</FrameLayout>
+        <!-- Título: Temperatura -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Gauge: Temperatura -->
+        <com.github.anastr.speedviewlib.SpeedView
+            android:id="@+id/gaugeTemperatura"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            app:sv_unit="°C"
+            app:sv_withTremble="false"
+            app:sv_speedTextColor="@android:color/black"
+            app:sv_unitTextColor="@android:color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Título: Umidade do Ar -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umidade do Ar"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Gauge: Umidade do Ar -->
+        <com.github.anastr.speedviewlib.SpeedView
+            android:id="@+id/gaugeUmidade"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            app:sv_unit="%"
+            app:sv_withTremble="false"
+            app:sv_speedTextColor="@android:color/black"
+            app:sv_unitTextColor="@android:color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Título: Umidade do Solo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umidade do Solo"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Gauge: Umidade do Solo -->
+        <com.github.anastr.speedviewlib.SpeedView
+            android:id="@+id/gaugeSolo"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            app:sv_unit="%"
+            app:sv_withTremble="false"
+            app:sv_speedTextColor="@android:color/black"
+            app:sv_unitTextColor="@android:color/black"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

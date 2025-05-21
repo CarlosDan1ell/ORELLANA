@@ -1,4 +1,5 @@
 import com.android.build.gradle.ProguardFiles.getDefaultProguardFile
+import org.gradle.kotlin.dsl.implementation
 
 plugins {
     alias(libs.plugins.android.application)
@@ -45,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.anastr:speedviewlib:1.6.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
